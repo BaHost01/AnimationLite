@@ -262,3 +262,10 @@ async function showExportFunctionForm(player) {
 }
 
 function showHelp(player) { player.sendMessage("§eRight-Click (P1), Sneak+Right-Click (P2), Punch (Gen Point), Use Air (Menu)"); }
+
+// --- Branding Overlay ---
+system.runInterval(() => {
+    for (const player of world.getAllPlayers()) {
+        player.onScreenDisplay.setActionBar("§l§bKEYFRAME LITE ++ §r§7BY §eBAHOST01 §8(#agente0981 In Discord)");
+    }
+}, 40); // Update every 2 seconds (40 ticks) to keep it persistent

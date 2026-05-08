@@ -32,7 +32,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD }}
-          content: "🚀 New Build for KeyframeLite Animation Mod!"
+          content: "**KEYFRAME LITE ++ BY BAHOST01 (#agente0981 In Discord)**\n🚀 New Build for KeyframeLite Animation Mod!"
           title: "KeyframeLite Addon Build"
           description: "A new version of KeyframeLite has been built and is ready for testing."
           color: 0x0984e3
