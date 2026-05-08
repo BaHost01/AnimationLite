@@ -1,0 +1,6 @@
+.DS_Store
+*.svg
+pack_icon.svg
+wand.svg
+node_modules/
+.vscode/

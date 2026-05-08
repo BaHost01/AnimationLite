@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "KeyframeLite",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "keyframelite_wand": {
+      "textures": "textures/items/wand"
+    }
+  }
+}

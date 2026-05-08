@@ -1,0 +1,30 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Logic and commands for the Animation Mod",
+        "name": "KeyframeLite BP",
+        "uuid": "78280f5c-89a1-4d1a-8e2b-f7e9c5a2c4e1",
+        "version": [1, 0, 0],
+        "min_engine_version": [1, 20, 0]
+    },
+    "modules": [
+        {
+            "description": "Scripting module",
+            "type": "script",
+            "language": "javascript",
+            "uuid": "532c57f2-1a2c-4f8e-a2b1-3e4d5c6b7a8d",
+            "version": [1, 0, 0],
+            "entry": "scripts/main.js"
+        }
+    ],
+    "dependencies": [
+        {
+            "module_name": "@minecraft/server",
+            "version": "1.13.0"
+        },
+        {
+            "module_name": "@minecraft/server-ui",
+            "version": "1.2.0"
+        }
+    ]
+}
