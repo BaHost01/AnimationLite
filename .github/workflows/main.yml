@@ -20,11 +20,11 @@ jobs:
           zip -r KeyframeLite_Addon.mcaddon BP RP pack_icon.png
 
       - name: Send to Discord
-        uses: sinProject-Inc/discord-webhook-action@v2.0.0
-        with:
-          webhook_url: ${{ secrets.DISCORD }}
-          content: "**KEYFRAME LITE ++ BY BAHOST01 (#agente0981 In Discord)**\n🚀 New Build for KeyframeLite Animation Mod!"
-          filename: KeyframeLite_Addon.mcaddon
+        run: |
+          curl -H "Content-Type: multipart/form-data" \
+               -F "content=**KEYFRAME LITE ++ BY BAHOST01 (#agente0981 In Discord)**\n🚀 New Build for KeyframeLite Animation Mod!" \
+               -F "file=@KeyframeLite_Addon.mcaddon" \
+               ${{ secrets.DISCORD }}
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
