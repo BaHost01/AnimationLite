@@ -27,3 +27,10 @@ jobs:
             KeyframeLite_Addon.mcaddon
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Send to Discord
+        uses: sinProject-Inc/discord-webhook-action@v1.2.0
+        with:
+          webhook_url: ${{ secrets.DISCORD }}
+          content: "🚀 New Build for KeyframeLite Animation Mod!"
+          filename: KeyframeLite_Addon.mcaddon
