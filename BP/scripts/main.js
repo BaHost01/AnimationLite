@@ -5,6 +5,7 @@ const playerSelections = new Map(); // PlayerId -> { p1, p2, genPoint, baseSnaps
 const animations = new Map(); // Name -> { frames: [], delay: 5, loop: false }
 const activeAnimations = new Set(); // To track and stop looped animations
 const pendingGenPointSelection = new Set();
+let showBranding = true;
 
 /**
  * Takes a snapshot of the current selection to allow for restoration later.
@@ -106,8 +107,11 @@ world.beforeEvents.chatSend.subscribe((event) => {
             if (subCommand === "wand") {
                 player.runCommandAsync("give @s keyframelite:wand");
                 player.sendMessage("§eYou have been given the Animation Wand!");
+            } else if (subCommand === "branding") {
+                showBranding = !showBranding;
+                player.sendMessage(`§eBranding overlay is now ${showBranding ? "§aENABLED" : "§cDISABLED"}§e.`);
             } else {
-                player.sendMessage("§eUse '!anim wand' to get the tool, or Right-Click with it to open the menu.");
+                player.sendMessage("§eCommands:\n§f!anim wand §7- Get tool\n§f!anim branding §7- Toggle overlay");
             }
         });
     }
@@ -265,6 +269,7 @@ function showHelp(player) { player.sendMessage("§eRight-Click (P1), Sneak+Right
 
 // --- Branding Overlay ---
 system.runInterval(() => {
+    if (!showBranding) return;
     for (const player of world.getAllPlayers()) {
         player.onScreenDisplay.setActionBar("§l§bKEYFRAME LITE ++ §r§7BY §eBAHOST01 §8(#agente0981 In Discord)");
     }
