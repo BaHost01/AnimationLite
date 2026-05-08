@@ -29,9 +29,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Send to Discord
-        uses: appleboy/discord-action@master
+        uses: sarisia/actions-status-discord@v1
         with:
-          webhook_id: ${{ secrets.DISCORD_ID }}
-          webhook_token: ${{ secrets.DISCORD_TOKEN }}
-          message: "🚀 New Build for KeyframeLite Animation Mod!"
+          webhook: ${{ secrets.DISCORD }}
+          content: "🚀 New Build for KeyframeLite Animation Mod!"
+          title: "KeyframeLite Addon Build"
+          description: "A new version of KeyframeLite has been built and is ready for testing."
+          color: 0x0984e3
           file: "KeyframeLite_Addon.mcaddon"
