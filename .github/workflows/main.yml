@@ -3,6 +3,8 @@ name: Build and Release
 on:
   push:
     branches: [ main, master ]
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 jobs:
@@ -17,7 +19,14 @@ jobs:
           zip -r KeyframeLite_RP.mcpack RP/*
           zip -r KeyframeLite_Addon.mcaddon BP RP pack_icon.png
 
-      - name: Release
+      - name: Send to Discord
+        uses: sinProject-Inc/discord-webhook-action@v2.0.0
+        with:
+          webhook_url: ${{ secrets.DISCORD }}
+          content: "**KEYFRAME LITE ++ BY BAHOST01 (#agente0981 In Discord)**\n🚀 New Build for KeyframeLite Animation Mod!"
+          filename: KeyframeLite_Addon.mcaddon
+
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
@@ -27,13 +36,3 @@ jobs:
             KeyframeLite_Addon.mcaddon
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Send to Discord
-        uses: sarisia/actions-status-discord@v1
-        with:
-          webhook: ${{ secrets.DISCORD }}
-          content: "**KEYFRAME LITE ++ BY BAHOST01 (#agente0981 In Discord)**\n🚀 New Build for KeyframeLite Animation Mod!"
-          title: "KeyframeLite Addon Build"
-          description: "A new version of KeyframeLite has been built and is ready for testing."
-          color: 0x0984e3
-          file: "KeyframeLite_Addon.mcaddon"
