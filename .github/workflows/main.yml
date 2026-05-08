@@ -29,8 +29,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Send to Discord
-        uses: sinProject-Inc/discord-webhook-action@v1.2.0
+        uses: appleboy/discord-action@master
         with:
-          webhook_url: ${{ secrets.DISCORD }}
-          content: "🚀 New Build for KeyframeLite Animation Mod!"
-          filename: KeyframeLite_Addon.mcaddon
+          webhook_id: ${{ secrets.DISCORD_ID }}
+          webhook_token: ${{ secrets.DISCORD_TOKEN }}
+          message: "🚀 New Build for KeyframeLite Animation Mod!"
+          file: "KeyframeLite_Addon.mcaddon"
